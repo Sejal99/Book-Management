@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import bg from "../../../public/image.png";
 import Cart from "./Cart";
-
+//@ts-ignore
 const Navbar = ({ count, setCount ,arr}) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
 

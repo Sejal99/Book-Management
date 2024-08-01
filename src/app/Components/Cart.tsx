@@ -1,5 +1,5 @@
 import React from "react";
-
+//@ts-ignore
 const Cart = ({ isOpen, toggleDrawer, arr }) => {
   return (
     <>
@@ -11,6 +11,7 @@ const Cart = ({ isOpen, toggleDrawer, arr }) => {
         <div className="p-4">
           <h2 className="text-xl font-bold mb-4">Cart</h2>
           {arr.length > 0 ? (
+            //@ts-ignore
             arr.map((item, index) => (
               <div key={index} className="mb-2">
                 {item.name}

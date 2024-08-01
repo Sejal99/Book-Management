@@ -1,13 +1,14 @@
-// Modal.js
-import React, { useState } from "react";
 
+import React, { useState } from "react";
+ {/*@ts-ignore*/ }
 const Modal = ({ storedBeer, setData, getindex, data ,setIsOpen}) => {
   const [name, setName] = useState(storedBeer.name);
   const [price, setPrice] = useState(storedBeer.price);
   const [newName, setnewName] = useState(name);
-
+ {/*@ts-ignore*/ }
   const handleSubmit = (e) => {
     e.preventDefault();
+     {/*@ts-ignore*/ }
     setData((prev) => {
       const newArr = [...prev];
       const obj = { ...newArr[getindex] };

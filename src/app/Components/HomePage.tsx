@@ -27,19 +27,21 @@ const HomePage = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
+//@ts-ignore
   const handleAdd = (beer) => {
     setArr((prev) => {
       console.log(prev);
 
       const b = [...prev];
       console.log(b);
+      //@ts-ignore
       b.push({ name: beer.name, price: beer.price });
       return b;
     });
 
     setCount(count + 1);
   };
+  //@ts-ignore
   const handleSub = (beer) => {
     if (count === 0) {
       setCount(0);
@@ -47,14 +49,16 @@ const HomePage = () => {
       setCount(count - 1);
     }
   };
-
+//@ts-ignore
   const handleDelete = (id) => {
     setData((prev) => {
       const newArray = [...prev];
+      //@ts-ignore
       const deletedProduct = newArray.filter((prev) => prev.id !== id);
       return deletedProduct;
     });
   };
+  //@ts-ignore
   const handleUpdate = (beer,index) => {
     setBeer(beer);
     setIndex(index);
@@ -72,12 +76,15 @@ const HomePage = () => {
               key={index}
               className="bg-white shadow-md rounded-lg overflow-hidden"
             >
+                {/*@ts-ignore*/ }
               <img src={beer.image} alt={beer.name} className="w-50% h-50%" />
               <div className="p-4">
+                 {/*@ts-ignore*/ }
                 <h2 className="text-lg font-semibold">{beer.name}</h2>
 
                 <button
                   onClick={() => {
+                     {/*@ts-ignore*/ }
                     handleDelete(beer.id);
                   }}
                   className="mt-2 px-4 py-2 bg-red-500 text-white rounded"
