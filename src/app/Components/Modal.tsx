@@ -4,7 +4,7 @@ import React, { useState } from "react";
 const Modal = ({ storedBeer, setData, getindex, data ,setIsOpen}) => {
   const [name, setName] = useState(storedBeer.name);
   const [price, setPrice] = useState(storedBeer.price);
-  const [newName, setnewName] = useState(name);
+ 
  {/*@ts-ignore*/ }
   const handleSubmit = (e) => {
     e.preventDefault();
