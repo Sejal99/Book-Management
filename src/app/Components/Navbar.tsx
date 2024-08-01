@@ -2,8 +2,9 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import bg from "../../../public/image.png";
+import Cart from "./Cart";
 
-const Navbar = ({ count, setCount }) => {
+const Navbar = ({ count, setCount ,arr}) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   const handleOpen = () => {
@@ -26,6 +27,7 @@ const Navbar = ({ count, setCount }) => {
           </div>
         )}
       </div>
+      {isCartOpen && <Cart arr={arr} />}
     </div>
   );
 };

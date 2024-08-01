@@ -64,7 +64,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <Navbar count={count} setCount={setCount} />
+      <Navbar count={count} setCount={setCount} arr={arr}/>
       <div className="p-6">
         <div className="grid grid-cols-3 gap-6">
           {data?.map((beer, index) => (
