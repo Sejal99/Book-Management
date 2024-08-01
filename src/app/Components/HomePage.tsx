@@ -45,66 +45,68 @@ const HomePage = () => {
     }
   };
 
-  const handleDelete = (beer.id) => {
-
+  const handleDelete = (id) => {
+    setData((prev) => {
+      const newArray = [...prev];
+      const deletedProduct = newArray.filter((prev) => prev.id !== id);
+      return deletedProduct;
+    });
   };
-  const handleUpdate = () => {};
+  const handleUpdate = () => {
+    
+  };
 
   return (
     <div>
-    <Navbar count={count} setCount={setCount}/>
-    <div className="p-6">
-      <div className="grid grid-cols-3 gap-6">
-        {data?.map((beer, index) => (
-          <div
-            key={index}
-            className="bg-white shadow-md rounded-lg overflow-hidden"
-          >
-            <img
-              src={beer.image}
-              alt={beer.name}
-              className="w-50% h-50%"
-            />
-            <div className="p-4">
-              <h2 className="text-lg font-semibold">{beer.name}</h2>
+      <Navbar count={count} setCount={setCount} />
+      <div className="p-6">
+        <div className="grid grid-cols-3 gap-6">
+          {data?.map((beer, index) => (
+            <div
+              key={index}
+              className="bg-white shadow-md rounded-lg overflow-hidden"
+            >
+              <img src={beer.image} alt={beer.name} className="w-50% h-50%" />
+              <div className="p-4">
+                <h2 className="text-lg font-semibold">{beer.name}</h2>
 
-              <button
-                onClick={() => {
-                  handleDelete(beer.id);
-                }}
-                className="mt-2 px-4 py-2 bg-red-500 text-white rounded"
-              >
-                Delete
-              </button>
-              <button
-                onClick={() => {
-                  handleUpdate(beer, index);
-                }}
-                className="mt-2 px-4 py-2 bg-blue-500 text-white rounded"
-              >
-                Update
-              </button>
-              <button
-                className="mt-2 px-4 py-2 bg-gray-300 rounded"
-                onClick={() => {
-                  handleSub(beer);
-                }}
-              >
-                -
-              </button>
-              <button
-                onClick={() => {
-                  handleAdd(beer);
-                }}
-                className="mt-2 px-4 py-2 bg-green-500 text-white rounded"
-              >
-                +
-              </button>
+                <button
+                  onClick={() => {
+                    handleDelete(beer.id);
+                  }}
+                  className="mt-2 px-4 py-2 bg-red-500 text-white rounded"
+                >
+                  Delete
+                </button>
+                <button
+                  onClick={() => {
+                    handleUpdate(beer, index);
+                  }}
+                  className="mt-2 px-4 py-2 bg-blue-500 text-white rounded"
+                >
+                  Update
+                </button>
+                <button
+                  className="mt-2 px-4 py-2 bg-gray-300 rounded"
+                  onClick={() => {
+                    handleSub(beer);
+                  }}
+                >
+                  -
+                </button>
+                <button
+                  onClick={() => {
+                    handleAdd(beer);
+                  }}
+                  className="mt-2 px-4 py-2 bg-green-500 text-white rounded"
+                >
+                  +
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
     </div>
   );
 };
