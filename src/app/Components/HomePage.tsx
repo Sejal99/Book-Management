@@ -1,11 +1,14 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
+import Modal from "./Modal";
 
 const HomePage = () => {
   const [data, setData] = useState([]);
   const [count, setCount] = useState(0);
-
+  const [storedBeer, setBeer] = useState({});
+  const [getindex, setIndex] = useState(-1);
+  const [isOpen, setIsOpen] = useState(false);
   const [arr, setArr] = useState([]);
   const fetchData = async () => {
     try {
@@ -52,8 +55,11 @@ const HomePage = () => {
       return deletedProduct;
     });
   };
-  const handleUpdate = () => {
-    
+  const handleUpdate = (beer,index) => {
+    setBeer(beer);
+    setIndex(index);
+    setIsOpen(true);
+
   };
 
   return (
@@ -107,6 +113,15 @@ const HomePage = () => {
           ))}
         </div>
       </div>
+      {isOpen && (
+        <Modal
+          storedBeer={storedBeer}
+          setData={setData}
+          getindex={getindex}
+          data={data}
+          setIsOpen={setIsOpen}
+        />
+      )}
     </div>
   );
 };
