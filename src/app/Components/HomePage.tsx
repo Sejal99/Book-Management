@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Navbar from "./Navbar";
 
 const HomePage = () => {
   const [data, setData] = useState([]);
@@ -48,6 +49,8 @@ const HomePage = () => {
   const handleUpdate = () => {};
 
   return (
+    <div>
+    <Navbar count={count} setCount={setCount}/>
     <div className="p-6">
       <div className="grid grid-cols-3 gap-6">
         {data?.map((beer, index) => (
@@ -99,6 +102,7 @@ const HomePage = () => {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 };
