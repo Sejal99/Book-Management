@@ -27,7 +27,7 @@ const Navbar = ({ count, setCount ,arr}) => {
           </div>
         )}
       </div>
-      {isCartOpen && <Cart arr={arr} />}
+      {isCartOpen &&  <Cart isOpen={isCartOpen} toggleDrawer={handleOpen} arr={arr} />}
     </div>
   );
 };
