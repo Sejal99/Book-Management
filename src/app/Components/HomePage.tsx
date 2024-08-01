@@ -45,7 +45,9 @@ const HomePage = () => {
     }
   };
 
-  const handleDelete = () => {};
+  const handleDelete = (beer.id) => {
+
+  };
   const handleUpdate = () => {};
 
   return (
