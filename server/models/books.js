@@ -21,6 +21,12 @@ const bookSchema=new mongoose.Schema({
         type: Number,
         required: true,
     },
+    genre:{
+        type:String,
+        enum:['non-fiction','drama','fiction','comics'],
+        required:true
+
+    },
     //who created the books?
     userId: {
         type: mongoose.Schema.ObjectId,
