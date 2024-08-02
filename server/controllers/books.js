@@ -38,17 +38,32 @@ export const deleteBook = async (req, res) => {
   }
 };
 
-export const updatedBook=async(req,res)=>{
-const {id} =req.params;
-try {
-  const{bookname,image,description,price}=req.body;
-  const updateBook=await Books.findByIdAndUpdate(id,
-    { bookname, image, description, price },
-  );
-  res.json(updateBook)
- 
-} catch (error) {
-  console.log(error);
-  
-}
-}
+export const updatedBook = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const { bookname, image, description, price } = req.body;
+    const updateBook = await Books.findByIdAndUpdate(id, {
+      bookname,
+      image,
+      description,
+      price,
+    });
+    res.json(updateBook);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const userBooks = async (req, res) => {
+  console.log("ooooo");
+
+  const userId = req.clientId;
+  console.log(userId);
+
+  try {
+    const singleBook = await Books.find({ userId });
+    res.json(singleBook);
+  } catch (error) {
+    console.log(error);
+  }
+};
