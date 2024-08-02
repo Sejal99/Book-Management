@@ -17,3 +17,23 @@ export const createBook = async (req, res) => {
     console.log(error);
   }
 };
+
+export const getAllBooks = async (req, res) => {
+  try {
+    const books = await Books.find();
+    res.json(books);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteBook = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const deletedBook = await Books.findByIdAndDelete(id);
+
+    res.status(200).json({ message: "book deleted successfully" });
+  } catch (error) {
+    console.log(error);
+  }
+};
