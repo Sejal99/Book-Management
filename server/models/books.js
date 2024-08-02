@@ -20,7 +20,13 @@ const bookSchema=new mongoose.Schema({
     price:{
         type: Number,
         required: true,
-    }
+    },
+    //who created the books?
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+      },
 })
 
 export default mongoose.model("Books",bookSchema)
