@@ -38,6 +38,17 @@ export const deleteBook = async (req, res) => {
   }
 };
 
-export const updatedBook=async()=>{
-
+export const updatedBook=async(req,res)=>{
+const {id} =req.params;
+try {
+  const{bookname,image,description,price}=req.body;
+  const updateBook=await Books.findByIdAndUpdate(id,
+    { bookname, image, description, price },
+  );
+  res.json(updateBook)
+ 
+} catch (error) {
+  console.log(error);
+  
+}
 }

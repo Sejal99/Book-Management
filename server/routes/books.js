@@ -6,7 +6,7 @@ const router=express.Router();
 router.post("/create",verifyToken,createBook);
 router.get("/allBooks",getAllBooks);
 router.delete('/deleteBook/:id',verifyToken,deleteBook);
-router.put('/update',verifyToken,updatedBook)
+router.put('/update/:id',verifyToken,updatedBook)
 
 
 export default router;
