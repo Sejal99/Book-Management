@@ -23,7 +23,7 @@ const bookSchema=new mongoose.Schema({
     },
     //who created the books?
     userId: {
-        type: String,
+        type: mongoose.Schema.ObjectId,
         ref: "User",
         required: true,
       },

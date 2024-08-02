@@ -61,7 +61,7 @@ export const userBooks = async (req, res) => {
   console.log(userId);
 
   try {
-    const singleBook = await Books.find({ userId });
+    const singleBook = await Books.find({ userId }).populate('userId');
     res.json(singleBook);
   } catch (error) {
     console.log(error);
