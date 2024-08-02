@@ -3,8 +3,8 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken"
 export const signup = async (req, res) => {
   try {
-    const { username, email, password } = req.body;
-    const newUser = await User.create({ username, email, password });
+    const { username, email, password ,role} = req.body;
+    const newUser = await User.create({ username, email, password,role });
     console.log(newUser);
     res.status(201).json(newUser);
   } catch (error) {
