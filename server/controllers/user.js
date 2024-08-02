@@ -16,6 +16,8 @@ export const signin=async(req,res)=>{
 try {
     const {email,password}=req.body;
     const loggedUser=await User.findOne({email});
+    console.log(loggedUser);
+    
     if(!loggedUser){
         return res.json({message:'invalid email or password'})
     }
@@ -23,9 +25,12 @@ try {
     const matchPassword=await bcrypt.compare(password,loggedUser.password)
     //create a jwt token
     
-    const token=jwt.sign({userid:loggedUser._id,email:loggedUser.user},process.env.JWT_SECRET,{expiresIn:'1h'});
+    const token=jwt.sign({userid:loggedUser._id,email:loggedUser.email},process.env.JWT_SECRET);
+    console.log(process.env.JWT_SECRET);
+    
     res.json({token})
-    console.log(token);
+   
+    
     
 } catch (error) {
     console.log(error);
