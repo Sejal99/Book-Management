@@ -37,3 +37,7 @@ export const deleteBook = async (req, res) => {
     console.log(error);
   }
 };
+
+export const updatedBook=async()=>{
+
+}
