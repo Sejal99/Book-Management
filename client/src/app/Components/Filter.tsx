@@ -8,20 +8,29 @@ const Filter = () => {
     drama: false,
     comics: false,
   });
+  console.log(categories);
 
-  const handleChange=()=>{
-  
-  }
+  const handleChange = (e, category) => {
+    console.log(category);
+    setCategories((prev) => {
+      const options = { ...prev };
+      options[category] = !options[category];
+      return options;
+    });
+    
+  };
   return (
     <div>
       {Object.keys(categories).map((category) => (
         <div key={category}>
           <label>
             <input
-            type="checkbox"
-            name="category"
-            checked={categories[category]}
-            onChange={handleChange}
+              type="checkbox"
+              name="category"
+              value={categories[category]}
+              onChange={(e) => {
+                handleChange(e, category);
+              }}
             />
             {category}
           </label>
