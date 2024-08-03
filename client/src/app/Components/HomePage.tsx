@@ -74,12 +74,12 @@ const HomePage = () => {
                   <img
                     src={beer.image}
                     alt={beer.name}
-                     className="max-h-[100%] max-w-[100%] h-auto w-auto"
+                     className="h-[100%] w-[120%] "
                   />
                 </div>
                 <div className="w-3/5 p-1">
-                  <h2 className="text-xs font-bold text-gray-800">
-                    {beer.name}
+                  <h2 className="text-xl font-bold text-gray-800 mt-4">
+                    {beer.bookname}
                   </h2>
                   {/* <p className="mt-2 text-gray-600">{beer.description}</p> */}
                   <p className="mt-4 text-lg font-semibold text-gray-800">
