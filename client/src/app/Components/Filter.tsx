@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Filter = () => {
   const [categories, setCategories] = useState({
@@ -19,6 +19,10 @@ const Filter = () => {
     });
     
   };
+
+  useEffect(()=>{
+    
+  },[])
   return (
     <div>
       {Object.keys(categories).map((category) => (
