@@ -10,7 +10,8 @@ const Filter = () => {
     comics: false,
   });
   const router = useRouter();
-  console.log(categories);
+  console.log(router);
+  
 
   const handleChange = (e, category) => {
     console.log(category);
@@ -18,6 +19,7 @@ const Filter = () => {
       const options = { ...prev };
       options[category] = !options[category];
       return options;
+    
     });
   };
 
