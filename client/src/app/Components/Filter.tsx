@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const Filter = () => {
@@ -8,6 +9,7 @@ const Filter = () => {
     drama: false,
     comics: false,
   });
+  const router = useRouter();
   console.log(categories);
 
   const handleChange = (e, category) => {
@@ -17,12 +19,10 @@ const Filter = () => {
       options[category] = !options[category];
       return options;
     });
-    
   };
 
-  useEffect(()=>{
-    
-  },[])
+
+
   return (
     <div>
       {Object.keys(categories).map((category) => (
