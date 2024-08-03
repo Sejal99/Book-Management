@@ -61,42 +61,58 @@ const HomePage = () => {
       <Navbar count={count} setCount={setCount} arr={arr} />
       <div className="flex h-[100vh]">
         <div className="w-[15%] p-6 bg-gray-100">
-         <Filter/>
+          <Filter />
         </div>
-        <div className="w-[85%] bg-red-300 p-6">
-          <div className="grid grid-cols-3 gap-6">
+        <div className="w-[85%] bg-gray-50 p-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {data?.map((beer, index) => (
               <div
                 key={index}
-                className="bg-white shadow-md rounded-lg overflow-hidden"
+                className="bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform duration-200 hover:scale-105 flex h-40"
               >
-                <img src={beer.image} alt={beer.name} className="w-full h-auto" />
-                <div className="p-4">
-                  <h2 className="text-lg font-semibold">{beer.name}</h2>
-                  <button
-                    onClick={() => handleDelete(beer.id)}
-                    className="mt-2 px-4 py-2 bg-red-500 text-white rounded"
-                  >
-                    Delete
-                  </button>
-                  <button
-                    onClick={() => handleUpdate(beer, index)}
-                    className="mt-2 px-4 py-2 bg-blue-500 text-white rounded"
-                  >
-                    Update
-                  </button>
-                  <button
-                    className="mt-2 px-4 py-2 bg-gray-300 rounded"
-                    onClick={handleSub}
-                  >
-                    -
-                  </button>
-                  <button
-                    onClick={() => handleAdd(beer)}
-                    className="mt-2 px-4 py-2 bg-green-500 text-white rounded"
-                  >
-                    +
-                  </button>
+                <div className="w-2/5">
+                  <img
+                    src={beer.image}
+                    alt={beer.name}
+                     className="max-h-[100%] max-w-[100%] h-auto w-auto"
+                  />
+                </div>
+                <div className="w-3/5 p-1">
+                  <h2 className="text-xs font-bold text-gray-800">
+                    {beer.name}
+                  </h2>
+                  {/* <p className="mt-2 text-gray-600">{beer.description}</p> */}
+                  <p className="mt-4 text-lg font-semibold text-gray-800">
+                    ${beer.price}
+                  </p>
+                  {/* <div className="mt-6 flex justify-between items-center">
+                    <button
+                      onClick={() => handleDelete(beer.id)}
+                      className="px-4 py-2 bg-red-500 text-white rounded shadow-md hover:bg-red-600"
+                    >
+                      Delete
+                    </button>
+                    <button
+                      onClick={() => handleUpdate(beer, index)}
+                      className="px-4 py-2 bg-blue-500 text-white rounded shadow-md hover:bg-blue-600"
+                    >
+                      Update
+                    </button>
+                  </div> */}
+                   <div className="absolute bottom-2 right-2 flex items-center gap-1">
+                    <button
+                      className="px-2 py-0 bg-gray-300 text-gray-700 rounded shadow-md hover:bg-gray-400"
+                      onClick={handleSub}
+                    >
+                      -
+                    </button>
+                    <button
+                      onClick={() => handleAdd(beer)}
+                      className="px-2 py-0 bg-green-500 text-white rounded shadow-md hover:bg-green-600"
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
