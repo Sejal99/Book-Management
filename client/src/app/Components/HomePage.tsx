@@ -28,10 +28,11 @@ const HomePage = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
+//@ts-ignore
   const handleAdd = (beer) => {
     setArr((prev) => {
       const b = [...prev];
+      //@ts-ignore
       b.push({ name: beer.name, price: beer.price });
       return b;
     });
@@ -41,15 +42,16 @@ const HomePage = () => {
   const handleSub = () => {
     setCount(count > 0 ? count - 1 : 0);
   };
-
+//@ts-ignore
   const handleDelete = (id) => {
     setData((prev) => {
       const newArray = [...prev];
+      //@ts-ignore
       const deletedProduct = newArray.filter((prev) => prev.id !== id);
       return deletedProduct;
     });
   };
-
+//@ts-ignore
   const handleUpdate = (beer, index) => {
     setBeer(beer);
     setIndex(index);
@@ -72,17 +74,20 @@ const HomePage = () => {
               >
                 <div className="w-2/5">
                   <img
+                  //@ts-ignore
                     src={beer.image}
-                    alt={beer.name}
+                    
                      className="h-[100%] w-[120%] "
                   />
                 </div>
                 <div className="w-3/5 p-1">
-                  <h2 className="text-xl font-bold text-gray-800 mt-4">
+                  <h2 className="text-xl font-bold text-gray-800 mt-4 text-center">
+                 {/*@ts-ignore*/ }
                     {beer.bookname}
                   </h2>
                   {/* <p className="mt-2 text-gray-600">{beer.description}</p> */}
-                  <p className="mt-4 text-lg font-semibold text-gray-800">
+                  <p className="mt-4 text-lg font-semibold text-gray-800 text-center">
+                       {/*@ts-ignore*/ }
                     ${beer.price}
                   </p>
                   {/* <div className="mt-6 flex justify-between items-center">

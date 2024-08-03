@@ -11,11 +11,12 @@ const Filter = () => {
   });
   const router = useRouter();
   console.log(router);
-
+   {/*@ts-ignore*/ }
   const handleChange = (e, category) => {
     console.log(category);
     setCategories((prev) => {
       const options = { ...prev };
+         {/*@ts-ignore*/ }
       options[category] = !options[category];
       router.replace(`?category=${category}`);
       return options;
@@ -41,6 +42,7 @@ const Filter = () => {
   const filteredProduct=async()=>{
     const arry=[]
     for(let items in categories){
+         {/*@ts-ignore*/ }
       if(categories[items]===true){
         arry.push(items)
       }
@@ -73,6 +75,7 @@ filteredProduct()
             <input
               type="checkbox"
               name="category"
+              //@ts-ignore
               value={categories[category]}
               onChange={(e) => {
                 handleChange(e, category);
