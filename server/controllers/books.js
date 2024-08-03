@@ -1,7 +1,7 @@
 import Books from "../models/books.js";
 export const createBook = async (req, res) => {
   try {
-    const { bookname, image, description, price } = req.body;
+    const { bookname, image, description, price ,genre} = req.body;
     console.log("ll", req.clientId);
     const userId = req.clientId;
 
@@ -11,6 +11,7 @@ export const createBook = async (req, res) => {
       description,
       price,
       userId,
+      genre
     });
     res.json(newBook);
   } catch (error) {
@@ -27,7 +28,7 @@ export const getAllBooks = async (req, res) => {
     arr?.pop();
 
     let newArr=[]
-    arr.map((val)=>{
+    arr?.map((val)=>{
       newArr.push({
         genre:val
       })
