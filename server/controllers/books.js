@@ -20,7 +20,27 @@ export const createBook = async (req, res) => {
 
 export const getAllBooks = async (req, res) => {
   try {
-    const books = await Books.find();
+    const category = req.query.category;
+  
+
+  let  arr = category?.split(",");
+    arr?.pop();
+
+    let newArr=[]
+    arr.map((val)=>{
+      newArr.push({
+        genre:val
+      })
+    })
+
+    console.log(arr);
+    let books;
+    if (!category) {
+      books = await Books.find();
+    } else {
+      books = await Books.find({ $or: { newArr } });
+    }
+
     res.json(books);
   } catch (error) {
     console.log(error);
@@ -61,7 +81,7 @@ export const userBooks = async (req, res) => {
   console.log(userId);
 
   try {
-    const singleBook = await Books.find({ userId }).populate('userId');//populate joins books model with user model using userid
+    const singleBook = await Books.find({ userId }).populate("userId"); //populate joins books model with user model using userid
     res.json(singleBook);
   } catch (error) {
     console.log(error);

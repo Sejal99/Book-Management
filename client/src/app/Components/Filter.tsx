@@ -11,20 +11,60 @@ const Filter = () => {
   });
   const router = useRouter();
   console.log(router);
-  
 
   const handleChange = (e, category) => {
     console.log(category);
     setCategories((prev) => {
       const options = { ...prev };
       options[category] = !options[category];
+      router.replace(`?category=${category}`);
       return options;
-    
     });
+   
+    // const arr = [];
+    // for (let filteredItem in categories) {
+    //   if (categories[filteredItem] === true) {
+    //     const a = arr.find((value) => {
+    //       value === filteredItem;
+    //     });
+        
+    //       arr.push(filteredItem);
+     
+    //   }
+    // }
+
+    // arr.push(category);
+    // console.log(arr);
   };
+  console.log(categories);
 
-
-
+  const filteredProduct=async()=>{
+    const arry=[]
+    for(let items in categories){
+      if(categories[items]===true){
+        arry.push(items)
+      }
+    }
+    console.log(arry);
+    let str = '';
+    for(let i = 0; i < arry.length; i++){
+      str += arry[i];
+      str += ',';
+    }
+    
+    console.log(str);
+    
+    try {
+      const res=await fetch(`http://localhost:3002/books/allBooks?category=${str}`,{
+        method:"GET"
+      })
+    } catch (error) {
+      
+    }
+  }
+useEffect(()=>{
+filteredProduct()
+},[categories])
   return (
     <div>
       {Object.keys(categories).map((category) => (
