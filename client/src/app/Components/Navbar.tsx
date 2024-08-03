@@ -12,7 +12,7 @@ const Navbar = ({ count, setCount ,arr}) => {
   };
 
   return (
-    <div className="p-4 sticky top-0 bg-black flex justify-between items-center">
+    <div className="p-4 sticky top-0 bg-black flex justify-between items-center ">
       <div className="text-white">Books</div>
       <div className="relative cursor-pointer" onClick={handleOpen}>
         <Image

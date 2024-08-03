@@ -4,9 +4,10 @@ const Cart = ({ isOpen, toggleDrawer, arr }) => {
   return (
     <>
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-red-300 z-50 ${
+        className={`fixed top-0 right-0 h-full w-64 bg-red-300 transition-transform transform ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
+        style={{ zIndex: 1100 }}
       >
         <div className="p-4">
           <h2 className="text-xl font-bold mb-4">Cart</h2>
@@ -14,7 +15,7 @@ const Cart = ({ isOpen, toggleDrawer, arr }) => {
             //@ts-ignore
             arr.map((item, index) => (
               <div key={index} className="mb-2">
-                {item.name}
+                {item.bookname}
               </div>
             ))
           ) : (
@@ -27,6 +28,7 @@ const Cart = ({ isOpen, toggleDrawer, arr }) => {
         <div
           className="fixed inset-0 bg-black opacity-50"
           onClick={toggleDrawer}
+          style={{ zIndex: 1000 }}
         ></div>
       )}
     </>

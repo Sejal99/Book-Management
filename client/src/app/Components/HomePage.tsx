@@ -85,7 +85,7 @@ const HomePage = () => {
                  {/*@ts-ignore*/ }
                     {beer.bookname}
                   </h2>
-                  {/* <p className="mt-2 text-gray-600">{beer.description}</p> */}
+                
                   <p className="mt-4 text-lg font-semibold text-gray-800 text-center">
                        {/*@ts-ignore*/ }
                     ${beer.price}
