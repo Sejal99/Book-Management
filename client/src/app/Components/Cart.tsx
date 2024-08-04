@@ -4,7 +4,7 @@ const Cart = ({ isOpen, toggleDrawer, arr }) => {
   return (
     <>
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-red-300 transition-transform transform ${
+        className={`fixed top-0 right-0 h-full w-64 bg-white transition-transform transform ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
         style={{ zIndex: 1100 }}
