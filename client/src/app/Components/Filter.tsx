@@ -22,6 +22,8 @@ const Filter = ({setData}) => {
       router.replace(`?category=${category}`);
       return options;
     });
+
+    
    
     // const arr = [];
     // for (let filteredItem in categories) {

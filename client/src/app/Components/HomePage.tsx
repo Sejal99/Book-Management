@@ -11,7 +11,14 @@ const HomePage = () => {
   const [getindex, setIndex] = useState(-1);
   const [isOpen, setIsOpen] = useState(false);
   const [arr, setArr] = useState([]);
-console.log(arr);
+  const [loggedIn, setIsLoggedIn] = useState(false);
+  // console.log(arr);
+
+  useEffect(() => {
+    localStorage.getItem("token");
+    setIsLoggedIn(true);
+  });
+  console.log(loggedIn);
 
   const fetchData = async () => {
     try {
@@ -29,23 +36,21 @@ console.log(arr);
   useEffect(() => {
     fetchData();
   }, []);
-//@ts-ignore
+  //@ts-ignore
   const handleAdd = (beer) => {
     setArr((prev) => {
       const b = [...prev];
       //@ts-ignore
-      b.push({ bookname: beer.bookname, price: beer.price,image:beer.image });
+      b.push({ bookname: beer.bookname, price: beer.price, image: beer.image });
       return b;
     });
     setCount(count + 1);
-   
-    
   };
 
   const handleSub = () => {
     setCount(count > 0 ? count - 1 : 0);
   };
-//@ts-ignore
+  //@ts-ignore
   const handleDelete = (id) => {
     setData((prev) => {
       const newArray = [...prev];
@@ -54,7 +59,7 @@ console.log(arr);
       return deletedProduct;
     });
   };
-//@ts-ignore
+  //@ts-ignore
   const handleUpdate = (beer, index) => {
     setBeer(beer);
     setIndex(index);
@@ -77,37 +82,38 @@ console.log(arr);
               >
                 <div className="w-2/5">
                   <img
-                  //@ts-ignore
+                    //@ts-ignore
                     src={beer.image}
-                    
-                     className="h-[100%] w-[120%] "
+                    className="h-[100%] w-[120%] "
                   />
                 </div>
                 <div className="w-3/5 p-1">
                   <h2 className="text-xl font-bold text-gray-800 mt-4 text-center">
-                 {/*@ts-ignore*/ }
+                    {/*@ts-ignore*/}
                     {beer.bookname}
                   </h2>
-                
+
                   <p className="mt-4 text-lg font-semibold text-gray-800 text-center">
-                       {/*@ts-ignore*/ }
-                    ${beer.price}
+                    {/*@ts-ignore*/}${beer.price}
                   </p>
-                  {/* <div className="mt-6 flex justify-between items-center">
-                    <button
-                      onClick={() => handleDelete(beer.id)}
-                      className="px-4 py-2 bg-red-500 text-white rounded shadow-md hover:bg-red-600"
-                    >
-                      Delete
-                    </button>
-                    <button
-                      onClick={() => handleUpdate(beer, index)}
-                      className="px-4 py-2 bg-blue-500 text-white rounded shadow-md hover:bg-blue-600"
-                    >
-                      Update
-                    </button>
-                  </div> */}
-                   <div className="absolute bottom-2 right-2 flex items-center gap-1">
+                  {loggedIn && (
+                    <div className="mt-6 flex justify-between items-center">
+                      <button
+                        onClick={() => handleDelete(beer.id)}
+                        className="px-4 py-2 bg-red-500 text-white rounded shadow-md hover:bg-red-600"
+                      >
+                        Delete
+                      </button>
+                      <button
+                        onClick={() => handleUpdate(beer, index)}
+                        className="px-4 py-2 bg-blue-500 text-white rounded shadow-md hover:bg-blue-600"
+                      >
+                        Update
+                      </button>
+                    </div>
+                  )}
+
+                  <div className="absolute bottom-2 right-2 flex items-center gap-1">
                     <button
                       className="px-2 py-0 bg-gray-300 text-gray-700 rounded shadow-md hover:bg-gray-400"
                       onClick={handleSub}
