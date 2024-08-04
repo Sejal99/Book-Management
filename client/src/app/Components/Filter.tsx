@@ -2,14 +2,14 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-const Filter = () => {
+const Filter = ({setData}) => {
   const [categories, setCategories] = useState({
     fiction: false,
     nonfiction: false,
     drama: false,
     comics: false,
   });
-  const [data,setData]=useState([]);
+
   const router = useRouter();
   console.log(router);
    {/*@ts-ignore*/ }
