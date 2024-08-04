@@ -14,11 +14,11 @@ const HomePage = () => {
   const [loggedIn, setIsLoggedIn] = useState(false);
   // console.log(arr);
 
-  useEffect(() => {
-    localStorage.getItem("token");
-    setIsLoggedIn(true);
-  });
-  console.log(loggedIn);
+  // useEffect(() => {
+  //   localStorage.getItem("token");
+  //   setIsLoggedIn(true);
+  // });
+  // console.log(loggedIn);
 
   const fetchData = async () => {
     try {
