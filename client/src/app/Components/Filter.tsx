@@ -9,6 +9,7 @@ const Filter = () => {
     drama: false,
     comics: false,
   });
+  const [data,setData]=useState([]);
   const router = useRouter();
   console.log(router);
    {/*@ts-ignore*/ }
@@ -60,6 +61,10 @@ const Filter = () => {
       const res=await fetch(`http://localhost:3002/books/allBooks?category=${str}`,{
         method:"GET"
       })
+      const data=await res.json();
+      // console.log(data);
+      setData(data);
+      
     } catch (error) {
       
     }
