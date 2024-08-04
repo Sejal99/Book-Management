@@ -7,7 +7,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const[ans,setAns]=useState();
   const router=useRouter();
-
+//@ts-ignore
   const handleLogin=async(e)=>{
     e.preventDefault();
     try {
@@ -21,7 +21,8 @@ const Login = () => {
       })
       const data=await res.json();
   console.log(data);
-  localStorage.setItem("token",data.token)
+  localStorage.setItem("token",data.token);
+  router.push("/")
     } catch (error) {
       console.log(error);
       
