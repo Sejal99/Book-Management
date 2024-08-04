@@ -1,7 +1,7 @@
 import Books from "../models/books.js";
 export const createBook = async (req, res) => {
   try {
-    const { bookname, image, description, price ,genre} = req.body;
+    const { bookname, image, description, price, genre } = req.body;
     console.log("ll", req.clientId);
     const userId = req.clientId;
 
@@ -11,7 +11,7 @@ export const createBook = async (req, res) => {
       description,
       price,
       userId,
-      genre
+      genre,
     });
     res.json(newBook);
   } catch (error) {
@@ -22,29 +22,28 @@ export const createBook = async (req, res) => {
 export const getAllBooks = async (req, res) => {
   try {
     const category = req.query.category;
-  
 
-  let  arr = category?.split(",");
-    arr?.pop();
-
-    let newArr=[]
-    arr?.map((val)=>{
-      newArr.push({
-        genre:val
-      })
-    })
-
-    console.log(arr);
-    let books;
+    // If category is not provided or is empty, handle it early.
     if (!category) {
-      books = await Books.find();
-    } else {
-      books = await Books.find({ $or: { newArr } });
+      const books = await Books.find();
+      return res.json(books);
     }
+
+    // Split the category string by commas
+    let arr = category.split(",");
+
+    // Create an array of genre objects for the $or query
+    let newArr = arr.map((val) => ({ genre: val.trim() }));
+
+    console.log(newArr); // Log the newArr to check its content
+
+    // Find books based on the genres
+    const books = await Books.find({ $or: newArr });
 
     res.json(books);
   } catch (error) {
     console.log(error);
+    res.status(500).json({ message: 'Server error' });
   }
 };
 
