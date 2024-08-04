@@ -34,7 +34,7 @@ console.log(arr);
     setArr((prev) => {
       const b = [...prev];
       //@ts-ignore
-      b.push({ bookname: beer.bookname, price: beer.price });
+      b.push({ bookname: beer.bookname, price: beer.price,image:beer.image });
       return b;
     });
     setCount(count + 1);
