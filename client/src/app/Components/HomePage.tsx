@@ -11,6 +11,7 @@ const HomePage = () => {
   const [getindex, setIndex] = useState(-1);
   const [isOpen, setIsOpen] = useState(false);
   const [arr, setArr] = useState([]);
+console.log(arr);
 
   const fetchData = async () => {
     try {
@@ -33,10 +34,12 @@ const HomePage = () => {
     setArr((prev) => {
       const b = [...prev];
       //@ts-ignore
-      b.push({ name: beer.name, price: beer.price });
+      b.push({ bookname: beer.bookname, price: beer.price });
       return b;
     });
     setCount(count + 1);
+   
+    
   };
 
   const handleSub = () => {
