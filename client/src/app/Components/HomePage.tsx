@@ -7,19 +7,15 @@ import Pagination from "./Pagination";
 
 const HomePage = () => {
   const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 3;
+
   const [count, setCount] = useState(0);
   const [storedBeer, setBeer] = useState({});
   const [getindex, setIndex] = useState(-1);
   const [isOpen, setIsOpen] = useState(false);
   const [arr, setArr] = useState([]);
   const [loggedIn, setIsLoggedIn] = useState(false);
-  // console.log(arr);
-
-  // useEffect(() => {
-  //   localStorage.getItem("token");
-  //   setIsLoggedIn(true);
-  // });
-  // console.log(loggedIn);
 
   const fetchData = async () => {
     try {
@@ -27,7 +23,6 @@ const HomePage = () => {
         method: "GET",
       });
       const result = await res.json();
-      console.log(result.length);
       setData(result);
     } catch (error) {
       console.error(error);
@@ -37,11 +32,14 @@ const HomePage = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  //@ts-ignore
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+
   const handleAdd = (beer) => {
     setArr((prev) => {
       const b = [...prev];
-      //@ts-ignore
       b.push({ bookname: beer.bookname, price: beer.price, image: beer.image });
       return b;
     });
@@ -51,16 +49,11 @@ const HomePage = () => {
   const handleSub = () => {
     setCount(count > 0 ? count - 1 : 0);
   };
-  //@ts-ignore
+
   const handleDelete = (id) => {
-    setData((prev) => {
-      const newArray = [...prev];
-      //@ts-ignore
-      const deletedProduct = newArray.filter((prev) => prev.id !== id);
-      return deletedProduct;
-    });
+    setData((prev) => prev.filter((item) => item.id !== id));
   };
-  //@ts-ignore
+
   const handleUpdate = (beer, index) => {
     setBeer(beer);
     setIndex(index);
@@ -76,28 +69,26 @@ const HomePage = () => {
         </div>
         <div className="w-[85%] bg-gray-50 p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {data?.map((beer, index) => (
+            {currentItems.map((beer, index) => (
               <div
                 key={index}
                 className="bg-white shadow-lg rounded-lg overflow-hidden transform transition-transform duration-200 hover:scale-105 flex h-40"
               >
                 <div className="w-2/5">
                   <img
-                    //@ts-ignore
                     src={beer.image}
-                    className="h-[100%] w-[120%] "
+                    className="h-[100%] w-[120%]"
+                    alt={beer.bookname}
                   />
                 </div>
                 <div className="w-3/5 p-1">
                   <h2 className="text-xl font-bold text-gray-800 mt-4 text-center">
-                    {/*@ts-ignore*/}
                     {beer.bookname}
                   </h2>
-
                   <p className="mt-4 text-lg font-semibold text-gray-800 text-center">
-                    {/*@ts-ignore*/}${beer.price}
+                    ${beer.price}
                   </p>
-                  {loggedIn && (
+                  {/* {loggedIn && (
                     <div className="mt-6 flex justify-between items-center">
                       <button
                         onClick={() => handleDelete(beer.id)}
@@ -112,8 +103,7 @@ const HomePage = () => {
                         Update
                       </button>
                     </div>
-                  )}
-
+                  )} */}
                   <div className="absolute bottom-2 right-2 flex items-center gap-1">
                     <button
                       className="px-2 py-0 bg-gray-300 text-gray-700 rounded shadow-md hover:bg-gray-400"
@@ -133,9 +123,13 @@ const HomePage = () => {
             ))}
           </div>
         </div>
-     
       </div>
-      <Pagination data= {data}/>
+      <Pagination
+        data={data}
+        itemsPerPage={itemsPerPage}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
       {isOpen && (
         <Modal
           storedBeer={storedBeer}
@@ -145,7 +139,6 @@ const HomePage = () => {
           setIsOpen={setIsOpen}
         />
       )}
- 
     </div>
   );
 };
