@@ -11,7 +11,7 @@ const Filter = ({setData}) => {
   });
 
   const router = useRouter();
-  console.log(router);
+  // console.log(router);
    {/*@ts-ignore*/ }
   const handleChange = (e, category) => {
     console.log(category);
