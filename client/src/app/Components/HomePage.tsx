@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import Modal from "./Modal";
 import Filter from "./Filter";
+import Pagination from "./Pagination";
 
 const HomePage = () => {
   const [data, setData] = useState([]);
@@ -132,7 +133,9 @@ const HomePage = () => {
             ))}
           </div>
         </div>
+     
       </div>
+      <Pagination/>
       {isOpen && (
         <Modal
           storedBeer={storedBeer}
@@ -142,6 +145,7 @@ const HomePage = () => {
           setIsOpen={setIsOpen}
         />
       )}
+ 
     </div>
   );
 };
