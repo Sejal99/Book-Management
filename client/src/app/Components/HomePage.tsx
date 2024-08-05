@@ -135,7 +135,7 @@ const HomePage = () => {
         </div>
      
       </div>
-      <Pagination/>
+      <Pagination data= {data}/>
       {isOpen && (
         <Modal
           storedBeer={storedBeer}

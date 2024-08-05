@@ -1,9 +1,12 @@
 import React from 'react'
 
-const Pagination = () => {
+const Pagination = ({data}) => {
+    const itemsPerPage=3;
+    const totalPages = Math.ceil(data.length / itemsPerPage);
+console.log(totalPages);
 
     const handleNext=()=>{
-        
+
     }
   return (
 
