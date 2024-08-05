@@ -5,7 +5,7 @@ const Pagination = ({data,itemsPerPage,currentPage,setCurrentPage}) => {
 
 
     const handleNext=()=>{
-
+        
     }
   return (
 
