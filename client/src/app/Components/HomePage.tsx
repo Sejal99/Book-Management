@@ -50,8 +50,9 @@ const HomePage = () => {
   const handleSub = () => {
     setCount(count > 0 ? count - 1 : 0);
   };
-
+//@ts-ignore
   const handleDelete = (id) => {
+    //@ts-ignore
     setData((prev) => prev.filter((item) => item.id !== id));
   };
 //@ts-ignore
