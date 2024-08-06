@@ -86,10 +86,11 @@ const HomePage = () => {
                 </div>
                 <div className="w-3/5 p-1">
                   <h2 className="text-xl font-bold text-gray-800 mt-4 text-center">
-                   
+                   {/* @ts-ignore*/}
                     {beer.bookname}
                   </h2>
                   <p className="mt-4 text-lg font-semibold text-gray-800 text-center">
+                      {/* @ts-ignore*/}
                     ${beer.price}
                   </p>
                   {/* {loggedIn && (
