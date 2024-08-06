@@ -16,6 +16,7 @@ const handlePrev=()=>{
 
         <div className='flex justify-center gap-2'>
             <button onClick={handlePrev}>Prev</button>
+            <div>{currentPage}</div>
             <button onClick={handleNext}>Next</button>
         </div>
 
