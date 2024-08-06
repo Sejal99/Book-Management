@@ -54,7 +54,7 @@ const HomePage = () => {
   const handleDelete = (id) => {
     setData((prev) => prev.filter((item) => item.id !== id));
   };
-
+//@ts-ignore
   const handleUpdate = (beer, index) => {
     setBeer(beer);
     setIndex(index);
