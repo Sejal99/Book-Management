@@ -77,13 +77,16 @@ const HomePage = () => {
               >
                 <div className="w-2/5">
                   <img
+                  //@ts-ignore
                     src={beer.image}
                     className="h-[100%] w-[120%]"
+                    //@ts-ignore
                     alt={beer.bookname}
                   />
                 </div>
                 <div className="w-3/5 p-1">
                   <h2 className="text-xl font-bold text-gray-800 mt-4 text-center">
+                   
                     {beer.bookname}
                   </h2>
                   <p className="mt-4 text-lg font-semibold text-gray-800 text-center">
