@@ -1,6 +1,7 @@
 import React from "react";
 //@ts-ignore
 const Cart = ({ isOpen, toggleDrawer, arr }) => {
+  
   let totalPrice = 0;
   for (let i = 0; i < arr.length; i++) {
     totalPrice += arr[i].price;
