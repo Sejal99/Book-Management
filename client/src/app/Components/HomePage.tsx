@@ -67,7 +67,7 @@ const HomePage = () => {
       <Navbar count={count} setCount={setCount} arr={arr} />
       <div className="flex h-[100vh]">
         <div className="w-[15%] p-6 bg-gray-100">
-          <Filter setData={setData} />
+          <Filter setData={setData} currentItems={currentItems} />
         </div>
         <div className="w-[85%] bg-gray-50 p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

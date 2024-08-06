@@ -1,6 +1,10 @@
 import React from "react";
 //@ts-ignore
 const Cart = ({ isOpen, toggleDrawer, arr }) => {
+  let totalPrice = 0;
+  for (let i = 0; i < arr.length; i++) {
+    totalPrice += arr[i].price;
+  }
   return (
     <>
       <div
@@ -31,6 +35,14 @@ const Cart = ({ isOpen, toggleDrawer, arr }) => {
             ))
           ) : (
             <p>Your cart is empty.</p>
+          )}
+            {arr.length > 0 && (
+            <div className="mt-4 pt-4 border-t border-gray-300">
+              <div className="flex justify-between font-bold text-lg">
+                <span>Total:</span>
+                <span>${totalPrice.toFixed(2)}</span>
+              </div>
+            </div>
           )}
         </div>
       </div>

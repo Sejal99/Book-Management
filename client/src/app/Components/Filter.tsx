@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 //@ts-ignore
-const Filter = ({setData}) => {
+const Filter = ({setData,currentItems}) => {
   const [categories, setCategories] = useState({
     fiction: false,
     nonfiction: false,
