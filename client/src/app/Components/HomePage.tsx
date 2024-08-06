@@ -36,10 +36,11 @@ const HomePage = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
-
+//@ts-ignore
   const handleAdd = (beer) => {
     setArr((prev) => {
       const b = [...prev];
+      //@ts-ignore
       b.push({ bookname: beer.bookname, price: beer.price, image: beer.image });
       return b;
     });
