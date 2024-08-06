@@ -3,7 +3,10 @@ import React from 'react'
 const Pagination = ({data,itemsPerPage,currentPage,setCurrentPage}) => {
    
 const handlePrev=()=>{
-setCurrentPage(currentPage-1);
+  if(currentPage>=1){
+    setCurrentPage(currentPage-1);
+  }
+
 }
 
     const handleNext=()=>{
