@@ -33,6 +33,19 @@ const HomePage = () => {
     fetchData();
   }, []);
 
+
+  const handle=async()=>{
+const res=await fetch("https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to=https://frontend.com",{
+  method:"GET",
+  headers:{
+    "Content-Type":"application/json"
+  }
+})
+const data=await res.json();
+console.log(data);
+
+  }
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
@@ -122,6 +135,12 @@ const HomePage = () => {
                       className="px-2 py-0 bg-green-500 text-white rounded shadow-md hover:bg-green-600"
                     >
                       +
+                    </button>
+                    <button
+                      onClick={() => handle()}
+                      className="px-2 py-0 bg-green-500 text-white rounded shadow-md hover:bg-green-600"
+                    >
+                      ++
                     </button>
                   </div>
                 </div>
