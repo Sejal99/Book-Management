@@ -1,4 +1,3 @@
-
 import mongoose from "mongoose";
 
 const bookSchema=new mongoose.Schema({
@@ -27,12 +26,11 @@ const bookSchema=new mongoose.Schema({
         required:true
 
     },
-    //who created the books?
-    userId: {
-        type: mongoose.Schema.ObjectId,
-        ref: "User",
-        required: true,
-      },
+    fileId:{
+        type:String,
+        required:false
+    }
+    
 })
 
 export default mongoose.model("Books",bookSchema)

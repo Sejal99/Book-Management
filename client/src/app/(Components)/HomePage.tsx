@@ -1,83 +1,66 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect,  useState } from "react";
 import Navbar from "./Navbar";
-import Modal from "./Modal";
 import Filter from "./Filter";
 import Pagination from "./Pagination";
+import { BASE_URL } from "./base";
+import { AppDispatch, RootState } from "./GlobalRedux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { addBook } from "./GlobalRedux/Features/BookSlice";
+import { increment } from "./GlobalRedux/Features/CounterSlice";
 
 const HomePage = () => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 3;
-
-  const [count, setCount] = useState(0);
-  const [storedBeer, setBeer] = useState({});
-  const [getindex, setIndex] = useState(-1);
-  const [isOpen, setIsOpen] = useState(false);
-  const [arr, setArr] = useState([]);
-  const [loggedIn, setIsLoggedIn] = useState(false);
-
-  const fetchData = async () => {
+  const itemsPerPage = 10;
+  const [getDisable, setDisable]= useState([])
+  const dispatch: AppDispatch = useDispatch();
+ 
+  
+  const fetchData = useCallback( async () => {
     try {
-      const res = await fetch("http://localhost:3002/books/allBooks", {
+      const res = await fetch(`${BASE_URL}/books/allBooks`, {
         method: "GET",
       });
       const result = await res.json();
+      const arr= new Array(result.length).fill(false)
+      // @ts-ignore
+      setDisable(arr)
       setData(result);
     } catch (error) {
       console.error(error);
     }
-  };
+  },[])
 
   useEffect(() => {
     fetchData();
   }, []);
 
-
-  const handle=async()=>{
-const res=await fetch("https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to=https://frontend.com",{
-  method:"GET",
-  headers:{
-    "Content-Type":"application/json"
-  }
-})
-const data=await res.json();
-console.log(data);
-
-  }
-
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = data?.slice(indexOfFirstItem, indexOfLastItem);
 //@ts-ignore
-  const handleAdd = (beer) => {
-    setArr((prev) => {
-      const b = [...prev];
+  const handleAdd = (beer, index) => {
+
+      setDisable((prev)=> {
+        let newArr= [...prev]
+        // @ts-ignore
+        newArr[index]= true
+        return newArr;
+      })
+
+
       //@ts-ignore
-      b.push({ bookname: beer.bookname, price: beer.price, image: beer.image });
-      return b;
-    });
-    setCount(count + 1);
+      dispatch(addBook({bookname: beer.bookname, price: beer.price, image: beer.image, quantity:1, fileId:beer.fileId}));
+
+
+    dispatch(increment())
   };
 
-  const handleSub = () => {
-    setCount(count > 0 ? count - 1 : 0);
-  };
-//@ts-ignore
-  const handleDelete = (id) => {
-    //@ts-ignore
-    setData((prev) => prev.filter((item) => item.id !== id));
-  };
-//@ts-ignore
-  const handleUpdate = (beer, index) => {
-    setBeer(beer);
-    setIndex(index);
-    setIsOpen(true);
-  };
 
   return (
     <div>
-      <Navbar count={count} setCount={setCount} arr={arr} />
+      <Navbar  />
       <div className="flex h-[100vh]">
         <div className="w-[15%] p-6 bg-gray-100">
           <Filter setData={setData} currentItems={currentItems} />
@@ -107,41 +90,8 @@ console.log(data);
                       {/* @ts-ignore*/}
                     ${beer.price}
                   </p>
-                  {/* {loggedIn && (
-                    <div className="mt-6 flex justify-between items-center">
-                      <button
-                        onClick={() => handleDelete(beer.id)}
-                        className="px-4 py-2 bg-red-500 text-white rounded shadow-md hover:bg-red-600"
-                      >
-                        Delete
-                      </button>
-                      <button
-                        onClick={() => handleUpdate(beer, index)}
-                        className="px-4 py-2 bg-blue-500 text-white rounded shadow-md hover:bg-blue-600"
-                      >
-                        Update
-                      </button>
-                    </div>
-                  )} */}
-                  <div className="absolute bottom-2 right-2 flex items-center gap-1">
-                    <button
-                      className="px-2 py-0 bg-gray-300 text-gray-700 rounded shadow-md hover:bg-gray-400"
-                      onClick={handleSub}
-                    >
-                      -
-                    </button>
-                    <button
-                      onClick={() => handleAdd(beer)}
-                      className="px-2 py-0 bg-green-500 text-white rounded shadow-md hover:bg-green-600"
-                    >
-                      +
-                    </button>
-                    <button
-                      onClick={() => handle()}
-                      className="px-2 py-0 bg-green-500 text-white rounded shadow-md hover:bg-green-600"
-                    >
-                      ++
-                    </button>
+                  <div className={` absolute bottom-2 right-2 flex items-center gap-1`}>
+                    <button disabled={getDisable[index] && true} onClick={() => handleAdd(beer, index)} className={`  ${getDisable[index] ? 'bg-gray-600' : "bg-blue-600"} bg-blue-600 p-3 rounded-lg text-white`}> {getDisable[index] ? "Added to Cart" : "Add To Cart" } </button>
                   </div>
                 </div>
               </div>
@@ -149,24 +99,8 @@ console.log(data);
           </div>
         </div>
       </div>
-      <Pagination
-        data={data}
-        itemsPerPage={itemsPerPage}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
-      {isOpen && (
-        <Modal
-          storedBeer={storedBeer}
-          setData={setData}
-          getindex={getindex}
-          data={data}
-          setIsOpen={setIsOpen}
-        />
-      )}
     </div>
   );
 };
 
 export default HomePage;
-

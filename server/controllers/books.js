@@ -1,9 +1,14 @@
 import Books from "../models/books.js";
+import files from "../models/files.js";
 export const createBook = async (req, res) => {
   try {
-    const { bookname, image, description, price, genre } = req.body;
-    console.log("ll", req.clientId);
+    const { bookname, image, description, price, genre, file } = req.body;
     const userId = req.clientId;
+
+    const newFile= await files.create({
+      file:file
+    })
+    const savedFile= await newFile.save()
 
     const newBook = await Books.create({
       bookname,
@@ -12,7 +17,9 @@ export const createBook = async (req, res) => {
       price,
       userId,
       genre,
+      fileId:savedFile._id
     });
+   await newBook.save()
     res.json(newBook);
   } catch (error) {
     console.log(error);
@@ -23,21 +30,17 @@ export const getAllBooks = async (req, res) => {
   try {
     const category = req.query.category;
 
-    // If category is not provided or is empty, handle it early.
     if (!category) {
       const books = await Books.find();
       return res.json(books);
     }
 
-    // Split the category string by commas
     let arr = category.split(",");
 
-    // Create an array of genre objects for the $or query
     let newArr = arr.map((val) => ({ genre: val.trim() }));
 
-    console.log(newArr); // Log the newArr to check its content
+    console.log(newArr); 
 
-    // Find books based on the genres
     const books = await Books.find({ $or: newArr });
 
     res.json(books);

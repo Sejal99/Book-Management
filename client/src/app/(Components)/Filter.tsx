@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { BASE_URL } from "./base";
 //@ts-ignore
 const Filter = ({setData,currentItems}) => {
   const [categories, setCategories] = useState({
@@ -11,7 +12,7 @@ const Filter = ({setData,currentItems}) => {
   });
 
   const router = useRouter();
-  // console.log(router);
+  
    {/*@ts-ignore*/ }
   const handleChange = (e, category) => {
     console.log(category);
@@ -40,7 +41,7 @@ const Filter = ({setData,currentItems}) => {
     // arr.push(category);
     // console.log(arr);
   };
-  console.log(categories);
+  // console.log(categories);
 
   const filteredProduct=async()=>{
     const arry=[]
@@ -50,21 +51,18 @@ const Filter = ({setData,currentItems}) => {
         arry.push(items)
       }
     }
-    console.log(arry);
     let str = '';
     for(let i = 0; i < arry.length; i++){
       str += arry[i];
       str += ',';
     }
     
-    console.log(str);
     
     try {
-      const res=await fetch(`http://localhost:3002/books/allBooks?category=${str}`,{
+      const res=await fetch(`${BASE_URL}/books/allBooks?category=${str}`,{
         method:"GET"
       })
       const data=await res.json();
-      // console.log(data);
       setData(data);
       
     } catch (error) {
