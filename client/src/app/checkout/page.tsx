@@ -11,7 +11,7 @@ import Navbar from '../(Components)/Navbar';
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
-const stripePromise = loadStripe('pk_test_51PjdabHaMXngjvddCslsW5iG4UdPyWrF1IGT8KOHLBhkljubXyec28cAqYl7eFOsX4xOORWWy5tZnxV48Dilt0gQ00uaIYQL0B');
+const stripePromise = loadStripe('pk_test_51PmHJrRwMOzblwjNY2Gbm1AolvZA4zWfSA8iZgcUZoE7O61PETujoEKcP6VfhoT4OCW109ya1uTcoYBEKlnLnztQ00Va0W9pTp');
 
 export default function App() {
   const cartBooks = useSelector((state: RootState) => state.books);

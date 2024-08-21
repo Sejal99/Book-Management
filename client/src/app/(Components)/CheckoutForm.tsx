@@ -4,7 +4,7 @@ import {useStripe, useElements, PaymentElement, AddressElement} from '@stripe/re
 import { AppDispatch } from './GlobalRedux/store';
 import { useDispatch } from 'react-redux';
 import { resetBooks } from './GlobalRedux/Features/BookSlice';
-import { toast } from 'react-toastify';
+
 import { useRouter } from 'next/navigation';
 
 //@ts-ignore
@@ -33,7 +33,7 @@ const CheckoutForm = ({clientSecret, setClientSecret,setCheckoutSuccess}) => {
       });
   
       if(!result.error){
-        toast.success("Checkout Successfull!")
+        // toast.success("Checkout Successfull!")
         dispatch(resetBooks())
         setCheckoutSuccess(true)
         setClientSecret(null)
