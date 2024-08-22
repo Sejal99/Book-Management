@@ -29,19 +29,20 @@ export const createBook = async (req, res) => {
 export const getAllBooks = async (req, res) => {
   try {
     const category = req.query.category;
+    let books;
 
     if (!category) {
-      const books = await Books.find();
-      return res.json(books);
+      // Sort by _id in descending order to get the latest documents first
+      books = await Books.find().sort({ _id: -1 });
+    } else {
+      let arr = category.split(",");
+      let newArr = arr.map((val) => ({ genre: val.trim() }));
+
+      console.log(newArr); 
+
+      // Find by category and sort by _id in descending order
+      books = await Books.find({ $or: newArr }).sort({ _id: -1 });
     }
-
-    let arr = category.split(",");
-
-    let newArr = arr.map((val) => ({ genre: val.trim() }));
-
-    console.log(newArr); 
-
-    const books = await Books.find({ $or: newArr });
 
     res.json(books);
   } catch (error) {
@@ -49,6 +50,8 @@ export const getAllBooks = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+
+
 
 export const deleteBook = async (req, res) => {
   const { id } = req.params;
