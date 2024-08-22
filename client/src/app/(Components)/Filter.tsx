@@ -73,24 +73,27 @@ useEffect(()=>{
 filteredProduct()
 },[categories])
   return (
-    <div>
+    <div className="bg-white shadow rounded-lg p-4">
+    <h3 className="text-md font-semibold text-gray-700 mb-4">Filter by Category</h3>
+    <div className="space-y-4">
       {Object.keys(categories).map((category) => (
-        <div key={category}>
-          <label>
-            <input
-              type="checkbox"
-              name="category"
-              //@ts-ignore
-              value={categories[category]}
-              onChange={(e) => {
-                handleChange(e, category);
-              }}
-            />
-            {category}
+        <div key={category} className="flex items-center space-x-2">
+          <input
+            id={category}
+            type="checkbox"
+            name="category"
+            //@ts-ignore
+            checked={categories[category]}
+            onChange={(e) => handleChange(e, category)}
+            className="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+          />
+          <label htmlFor={category} className="text-sm font-medium text-gray-700">
+            {category.charAt(0).toUpperCase() + category.slice(1)}
           </label>
         </div>
       ))}
     </div>
+  </div>
   );
 };
 export default Filter;

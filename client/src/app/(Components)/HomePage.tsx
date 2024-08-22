@@ -12,7 +12,7 @@ import { increment } from "./GlobalRedux/Features/CounterSlice";
 const HomePage = () => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
+  const itemsPerPage = 15;
   const [getDisable, setDisable] = useState([]);
   const dispatch: AppDispatch = useDispatch();
 
@@ -47,9 +47,8 @@ const HomePage = () => {
       return newArr;
     });
 
-   
     dispatch(
-       //@ts-ignore
+      //@ts-ignore
       addBook({
         bookname: beer.bookname,
         price: beer.price,
@@ -63,43 +62,51 @@ const HomePage = () => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col min-h-screen bg-green-800">
       <Navbar />
-      <div className="flex h-[100vh]">
-        <div className="w-[15%] p-6 bg-gray-100">
+      <div className="flex flex-col ">
+
+     
+      <div className="flex  bg-green-800">
+        <div className="w-[15%] p-6 bg-gray-50">
           <Filter setData={setData} currentItems={currentItems} />
         </div>
-        <div className="w-[85%] bg-gray-50 p-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+        <div className="w-[85%] min-h-screen p-6 bg-gray-50">
+          <div className="flex flex-col">
+
+    
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {currentItems.map((beer, index) => (
               <div
                 key={index}
-                className="bg-blue shadow-lg rounded-lg overflow-hidden transform transition-transform duration-200 hover:scale-105 flex flex-col h-auto w-[70%] mx-auto"
+                className="bg-blue border border-gray-400 shadow-lg rounded-lg overflow-hidden transform transition-transform duration-200 hover:scale-105 flex flex-col h-[320px] w-[75%] mx-auto"
               >
-                <div className="w-full h-40">
+                <div className="flex-grow flex justify-center items-center">
                   <img
-                    //@ts-ignore
+                    // @ts-ignore
                     src={beer.image}
-                    className="h-full w-full object-contain mt-4"
-                    //@ts-ignore
+                    className="h-40 w-auto object-contain mt-4 text-sm"
+                      // @ts-ignore
                     alt={beer.bookname}
                   />
                 </div>
-                <div className="w-full p-2 text-center">
-                  <h2 className="text-md font-bold text-gray-800 mt-4">
-                    {/* @ts-ignore*/}
-                    {beer.bookname}
-                  </h2>
-                  <p className="mt-1 text-sm font-semibold text-gray-800">
-                    {/* @ts-ignore*/}
-                    ${beer.price}
-                  </p>
+                <div className="flex-grow flex flex-col justify-between p-2 text-center">
+                  <div>
+                    <h2 className="text-sm font-semibold text-gray-800 mt-4">
+                {/*@ts-ignore*/ }
+                      {beer.bookname}
+                    </h2>
+                    <p className="mt-1 text-sm font-semibold text-gray-800">
+                         {/*@ts-ignore*/ }
+                      ${beer.price}
+                    </p>
+                  </div>
                   <div className="mt-2">
                     <button
                       disabled={getDisable[index]}
                       onClick={() => handleAdd(beer, index)}
                       className={`${
-                        getDisable[index] ? "bg-gray-600" : "bg-blue-600"
+                        getDisable[index] ? "bg-gray-600" : "bg-red-600"
                       } p-2 rounded-lg text-white text-sm`}
                     >
                       {getDisable[index] ? "Added to Cart" : "Add To Cart"}
@@ -109,7 +116,9 @@ const HomePage = () => {
               </div>
             ))}
           </div>
+          </div>
         </div>
+      </div>
       </div>
     </div>
   );

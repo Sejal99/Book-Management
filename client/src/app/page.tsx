@@ -4,7 +4,7 @@ import HomePage from "./(Components)/HomePage";
 
 export default function Home() {
   return (
-  <div>
+    <div className="flex flex-col justify-between min-h-screen ">
 
     <HomePage/>
   </div>
