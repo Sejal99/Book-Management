@@ -83,7 +83,7 @@ const Page = () => {
             <div className="text-xl font-medium text-gray-800 mb-4">No Orders Yet!</div>
             <button
               onClick={() => router.push('/')}
-              className="bg-green-600 text-white p-3 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="bg-red-600 text-white p-3 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
             >
               Shop Books
             </button>

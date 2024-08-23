@@ -8,6 +8,8 @@ import { AppDispatch, RootState } from "./GlobalRedux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { addBook } from "./GlobalRedux/Features/BookSlice";
 import { increment } from "./GlobalRedux/Features/CounterSlice";
+import { Carousel } from "react-responsive-carousel";
+import NextJsCarousel from "./NextJsCarousel";
 
 const HomePage = () => {
   const [data, setData] = useState([]);
@@ -64,6 +66,8 @@ const HomePage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       <Navbar />
+
+      <NextJsCarousel/>
       <div className="flex flex-col ">
 
      
