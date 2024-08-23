@@ -59,7 +59,7 @@ const CheckoutForm = ({clientSecret, setClientSecret,setCheckoutSuccess}) => {
       <PaymentElement id='payment-element' options={{layout:"tabs"}}  />
       </div>
       <div className=' text-3xl justify-end flex font-bold'>Total Price: ${localStorage.getItem('amount')}  </div>
-      <button onClick={()=> {}} className=' bg-black text-white p-3 hover:bg-slate-900 rounded-md'>Submit</button>
+      <button onClick={()=> {}} className=' bg-red-600 text-white p-3 hover:bg-red-600 rounded-md'>Submit</button>
       </div>
       </div>
     </form>

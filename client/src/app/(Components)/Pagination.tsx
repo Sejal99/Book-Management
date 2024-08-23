@@ -11,7 +11,7 @@ const Pagination = ({ data, itemsPerPage, currentPage, setCurrentPage }) => {
     setCurrentPage(currentPage + 1);
   };
   return (
-    <div className="flex justify-center gap-2">
+    <div className="flex justify-center gap-2 pl-10">
       <button
         onClick={handlePrev}
         className="bg-blue-300 px-2 py-2 rounded-md "

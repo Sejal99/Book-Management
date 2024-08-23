@@ -62,7 +62,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-green-800">
+    <div className="flex flex-col min-h-screen bg-gray-50">
       <Navbar />
       <div className="flex flex-col ">
 
@@ -120,6 +120,12 @@ const HomePage = () => {
         </div>
       </div>
       </div>
+      <Pagination
+        data={data}
+        itemsPerPage={itemsPerPage}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </div>
   );
 };
