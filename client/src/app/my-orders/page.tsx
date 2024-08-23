@@ -22,6 +22,7 @@ const Page = () => {
         throw new Error("Network problem!");
       }
       const data = await res.json();
+      
       setOrders(data.myOrders);
     } catch (err) {
       console.log(err);

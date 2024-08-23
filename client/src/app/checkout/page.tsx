@@ -8,6 +8,7 @@ import { RootState } from '../(Components)/GlobalRedux/store';
 import { BASE_URL } from '../(Components)/base';
 import { useRouter } from 'next/navigation';
 import Navbar from '../(Components)/Navbar';
+import OrderSuccessful from '../(Components)/OrderSuccessful';
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -92,7 +93,8 @@ export default function App() {
       }
       {
         checkoutSuccess && <div>
-          <button onClick={()=>router.push("/my-orders")} className=' bg-green-600 text-white p-3 rounded-md'>Check orders</button>
+          {/* <button onClick={()=>router.push("/my-orders")} className=' bg-green-600 text-white p-3 rounded-md'></button> */}
+          <OrderSuccessful/>
         </div>
       }
     </div>
