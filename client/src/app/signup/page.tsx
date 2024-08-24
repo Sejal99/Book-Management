@@ -3,14 +3,15 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { BASE_URL } from "../(Components)/base";
 import Image from "next/image";
-import logo from "../../../public/book.jpg"
+import logo from "../../../public/book.jpg";
+
 const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("user");
   const router = useRouter();
-//@ts-ignore
+
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
@@ -35,26 +36,26 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex h-[100vh]">
+    <div className="flex flex-col lg:flex-row h-[100vh]">
       {/* Left half - Image */}
-      <div className="flex-shrink-0 w-[45%] h-full flex justify-center items-center">
+      <div className="flex-shrink-0 md:w-[45%] md:h-full flex justify-center items-center h-1/3">
         <div className="relative w-full h-[80%] max-h-[500px]">
         <Image
           src={logo}
           alt="Signup Image"
           layout="fill"
           objectFit="contain"
-          className="rounded-l-md"
+          className="md:rounded-l-md"
         />
-      </div>
+        </div>
       </div>
 
       {/* Right half - Form */}
-      <div className="w-1/2 flex flex-col justify-center items-center bg-white pr-20">
-        <div className="text-2xl font-bold mb-2">Welcome!</div>
-        <p className="text-xl text-gray-700">Join Us and Explore More</p>
+      <div className="w-full lg:w-1/2 flex flex-col justify-center items-center bg-white p-6 lg:pr-20">
+        <div className="text-2xl font-bold mb-2 text-center lg:text-left">Welcome!</div>
+        <p className="text-xl text-gray-700 text-center lg:text-left">Join Us and Explore More</p>
 
-        <div className="p-8 py-10 shadow-md rounded-md w-[60%] mt-6">
+        <div className="p-8 py-10 shadow-md rounded-md w-full lg:w-[60%] mt-6">
           <h2 className="text-2xl font-bold mb-10 text-center">Sign Up</h2>
           <form onSubmit={handleSignup}>
             <div className="mb-4">
@@ -112,13 +113,12 @@ const Signup = () => {
               >
                 <option value="user">User</option>
                 <option value="admin">Admin</option>
-                {/* Add other roles as needed */}
               </select>
             </div>
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="bg-red-600 text-white p-2 rounded-md hover:bg-red-700 focus:outline-none w-[40%]"
+                className="bg-red-600 text-white p-2 rounded-md hover:bg-red-700 focus:outline-none w-full lg:w-[40%]"
               >
                 Sign Up
               </button>
