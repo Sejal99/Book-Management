@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { resetBooks } from "../(Components)/GlobalRedux/Features/BookSlice";
 import Image from "next/image";
 import Link from "next/link";
+import Navbar from "../(Components)/Navbar";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -36,6 +37,9 @@ const Login = () => {
   };
 
   return (
+    <div>
+      <Navbar/>
+    
     <div className="flex flex-col md:flex-row h-[100vh]">
       {/* Left half - Image */}
       <div className="flex-shrink-0 w-full md:w-[45%] h-[30vh] md:h-full flex justify-center items-center ">
@@ -117,6 +121,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

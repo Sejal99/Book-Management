@@ -5,7 +5,7 @@ import React from 'react'
 const OrderSuccessful = () => {
     const router= useRouter()
   return (
-    <div className="flex items-center justify-center min-h-screen ">
+    <div className="flex items-center justify-center min-h-screen mt-6">
     <div className="bg-white p-8 rounded-lg shadow-lg text-center">
       <div className="flex justify-center mb-4">
         <div className="w-16 h-16 flex items-center justify-center bg-green-100 rounded-full">
@@ -26,10 +26,12 @@ const OrderSuccessful = () => {
         </div>
       </div>
       <h2 className="text-2xl font-semibold mb-2">Payment Done!</h2>
-      <p className="text-gray-600 mb-4">
-        Thank you for completing your secure online payment.
+      <p className="text-black mb-4 gap-1 mt-2">
+        Thank you for Buying.
+        <br />
+        Your purchased E-Books are sent to your registered email.
       </p>
-      <p className="text-gray-600 mb-8">Have a great day!</p>
+      <p className="text-black mb-8">Have a great day!</p>
       <button onClick={()=>{
        router.push("/my-orders")
       }}>

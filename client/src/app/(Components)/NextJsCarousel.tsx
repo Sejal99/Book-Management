@@ -38,7 +38,7 @@ const NextJsCarousel = () => {
         </div>
         <div>
           <img
-            src="https://static.vecteezy.com/system/resources/thumbnails/002/126/051/small/set-of-people-reading-books-vector.jpg"
+            src="https://img.freepik.com/premium-vector/kids-read-books-learn-happy-reading-people-girls-boys-with-book-cartoon-banner-library-bookstore-school-vector-concept-illustration-reading-studying-book-education-learning_102902-3761.jpg?w=1380"
             alt="image4"
             className="max-h-96 w-auto mx-auto"
           />

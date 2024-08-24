@@ -12,7 +12,8 @@ import OrderSuccessful from '../(Components)/OrderSuccessful';
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
-const stripePromise = loadStripe('pk_test_51PmHJrRwMOzblwjNY2Gbm1AolvZA4zWfSA8iZgcUZoE7O61PETujoEKcP6VfhoT4OCW109ya1uTcoYBEKlnLnztQ00Va0W9pTp');
+//@ts-ignore
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_CLIENT);
 
 export default function App() {
   const cartBooks = useSelector((state: RootState) => state.books);
@@ -87,7 +88,7 @@ export default function App() {
     </Elements>
     </>
     }
-    <div className=' flex justify-center items-center h-[70vh]'>
+    <div className=' flex justify-center items-center h-[80vh]'>
       {
         loading && <div>Loading......</div>
       }

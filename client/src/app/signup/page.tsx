@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { BASE_URL } from "../(Components)/base";
 import Image from "next/image";
 import logo from "../../../public/book.jpg";
+import Navbar from "../(Components)/Navbar";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -36,6 +37,9 @@ const Signup = () => {
   };
 
   return (
+    <div>
+      <Navbar/>
+   
     <div className="flex flex-col lg:flex-row h-[100vh]">
       {/* Left half - Image */}
       <div className="flex-shrink-0 md:w-[45%] md:h-full flex justify-center items-center h-1/3">
@@ -130,6 +134,7 @@ const Signup = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
