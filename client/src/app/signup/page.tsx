@@ -11,7 +11,7 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("user");
   const router = useRouter();
-
+//@ts-ignore
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
