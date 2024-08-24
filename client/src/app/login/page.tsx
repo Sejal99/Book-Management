@@ -36,10 +36,10 @@ const Login = () => {
   };
 
   return (
-    <div className="flex h-[100vh]">
+    <div className="flex flex-col md:flex-row h-[100vh]">
       {/* Left half - Image */}
-      <div className="flex-shrink-0 w-[45%] h-full flex justify-center items-center">
-        <div className="relative w-full h-[80%] max-h-[500px]">
+      <div className="flex-shrink-0 w-full md:w-[45%] h-[30vh] md:h-full flex justify-center items-center ">
+        <div className="relative w-full h-full md:h-[80%] max-h-[300px] md:max-h-[500px]">
           <Image
             src="https://bookscape.com/_next/static/media/non-logged-bookshelf.a5668ea3.svg"
             alt="Login Image"
@@ -51,14 +51,16 @@ const Login = () => {
       </div>
 
       {/* Right half - Form */}
-      <div className="flex-shrink-0 w-[50%] flex flex-col justify-center items-center bg-white pl-10 pr-10">
-        <div className="text-2xl font-bold mb-2">Welcome!</div>
-        <p className=" text-xl text-gray-700">
+      <div className="flex-shrink-0 w-full md:w-[50%] flex flex-col justify-center items-center bg-white p-6 md:pl-10 md:pr-10 sm:h-[100vh] ">
+        <div className="text-xl md:text-2xl font-bold mb-2">Welcome!</div>
+        <p className="text-lg md:text-xl text-gray-700 text-center md:text-left">
           Unleash a World of Books Right Here
         </p>
 
-        <div className="p-8 py-10 shadow-md rounded-md w-[60%] mt-6">
-          <h2 className="text-2xl font-bold mb-10 text-center">Login</h2>
+        <div className="p-6 md:p-8 py-8 md:py-10 shadow-md rounded-md w-full md:w-[60%] mt-6">
+          <h2 className="text-xl md:text-2xl font-bold mb-8 md:mb-10 text-center">
+            Login
+          </h2>
           <form onSubmit={handleLogin}>
             <div className="mb-4">
               <label
@@ -97,7 +99,7 @@ const Login = () => {
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="bg-red-600 text-white p-2 rounded-md hover:bg-red-700 focus:outline-none w-[40%]"
+                className="bg-red-600 text-white p-2 rounded-md hover:bg-red-700 focus:outline-none w-[50%] md:w-[40%]"
               >
                 LOGIN
               </button>

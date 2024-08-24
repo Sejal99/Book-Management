@@ -34,7 +34,7 @@ const OrderSuccessful = () => {
        router.push("/my-orders")
       }}>
         <a className="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-600">
-          GO BACK
+          My Orders
         </a>
       </button>
     </div>
