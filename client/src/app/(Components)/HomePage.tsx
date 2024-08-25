@@ -26,6 +26,7 @@ const HomePage = () => {
       });
       const result = await res.json();
       const arr = new Array(result.length).fill(false);
+      //@ts-ignore
       setDisable(arr);
       setData(result);
       setLoading(false); // Set loading to false once data is loaded
@@ -42,16 +43,19 @@ const HomePage = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = data?.slice(indexOfFirstItem, indexOfLastItem);
-
+  //@ts-ignore
   const handleAdd = (beer, index) => {
     setDisable((prev) => {
       let newArr = [...prev];
+        //@ts-ignore
       newArr[index] = true;
       return newArr;
     });
 
     dispatch(
+        //@ts-ignore
       addBook({
+        
         bookname: beer.bookname,
         price: beer.price,
         image: beer.image,
@@ -86,17 +90,21 @@ const HomePage = () => {
                     >
                       <div className="flex-grow flex justify-center items-center">
                         <img
+                          //@ts-ignore
                           src={beer.image}
                           className="h-40 w-auto object-contain mt-4 text-sm"
+                            //@ts-ignore
                           alt={beer.bookname}
                         />
                       </div>
                       <div className="flex-grow flex flex-col justify-between p-2 text-center">
                         <div>
                           <h2 className="text-sm font-semibold text-gray-800 mt-4">
+                        {/*@ts-ignore */}
                             {beer.bookname}
                           </h2>
                           <p className="mt-1 text-sm font-semibold text-gray-800">
+                                    {/*@ts-ignore */}
                             ${beer.price}
                           </p>
                         </div>
