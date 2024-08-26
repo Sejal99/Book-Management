@@ -20,7 +20,7 @@ const Navbar = () => {
   const router = useRouter();
 
   useEffect(() => {
-    setToken(localStorage.getItem('token'));
+    setToken(localStorage.getItem("token"));
   }, []);
 
   const handleOpen = () => {
@@ -28,7 +28,7 @@ const Navbar = () => {
       dispatch(reset());
       setIsCartOpen(!isCartOpen);
     } else {
-      router.push('/login');
+      router.push("/login");
     }
   };
 
@@ -36,7 +36,7 @@ const Navbar = () => {
     localStorage.removeItem("token");
     setToken(null);
     alert("Logged out successfully!");
-    router.push('/');
+    router.push("/");
   };
 
   const toggleDropdown = () => {
@@ -45,8 +45,8 @@ const Navbar = () => {
 
   return (
     <div className="p-4 sticky top-0 bg-gradient-to-r from-gray-800 to-black flex justify-between items-center shadow-lg z-50">
-      <div 
-        onClick={() => router.push('/')} 
+      <div
+        onClick={() => router.push("/")}
         className="text-white cursor-pointer text-3xl font-bold transition-transform transform hover:scale-105"
       >
         Booksy
@@ -54,19 +54,19 @@ const Navbar = () => {
       <div className="flex gap-5 items-center">
         {/* User Profile Icon */}
         <div className="relative">
-          <Image 
-            src={logo} 
-            alt="User Profile" 
+          <Image
+            src={logo}
+            alt="User Profile"
             className="h-10 w-10 cursor-pointer transition-transform transform hover:scale-105"
             onClick={toggleDropdown}
           />
           {isDropdownOpen && (
             <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-50">
-              <div 
-                onClick={() => router.push('/my-orders')} 
+              <div
+                onClick={() => router.push("/my-orders")}
                 className="flex items-center gap-2 px-4 py-2 text-gray-800 cursor-pointer hover:bg-red-400"
               >
-                <Image 
+                <Image
                   src={orderIcon}
                   alt="Orders Icon"
                   width={20}
@@ -75,31 +75,29 @@ const Navbar = () => {
                 <span>My Orders</span>
               </div>
               {token && (
-         <div 
-         onClick={handleLogout} 
-         className="flex items-center gap-2 px-4 py-2 text-gray-800 cursor-pointer  hover:bg-red-400"
-       >
-           <Image 
-                  src={logoutIcon}
-                  alt="Logout Icon"
-                  width={20}
-                  height={20}
-                />
-                <span>Logout</span>
-          </div>
-        )}
+                <div
+                  onClick={handleLogout}
+                  className="flex items-center gap-2 px-4 py-2 text-gray-800 cursor-pointer  hover:bg-red-400"
+                >
+                  <Image
+                    src={logoutIcon}
+                    alt="Logout Icon"
+                    width={20}
+                    height={20}
+                  />
+                  <span>Logout</span>
+                </div>
+              )}
             </div>
           )}
         </div>
-        
+
         {/* Cart Icon */}
         <div className="relative cursor-pointer" onClick={handleOpen}>
-          <Image        
+          <Image
             src={bg}
             alt="Cart"
-            width={30}
-            height={40}
-            className="mr-2 transition-transform transform hover:scale-105"
+            className="h-10 w-10 cursor-pointer transition-transform transform hover:scale-105"
           />
           {cartCount.value > 0 && (
             <div className="absolute top-[-12px] right-[-12px] bg-red-500 rounded-full flex items-center justify-center w-6 h-6 text-white text-xs font-semibold">
