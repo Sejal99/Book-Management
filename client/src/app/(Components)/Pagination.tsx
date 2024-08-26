@@ -1,5 +1,5 @@
 import React from "react";
-
+//@ts-ignore
 const Pagination = ({ data, itemsPerPage, currentPage, setCurrentPage }) => {
   const handlePrev = () => {
     if (currentPage > 1) {
