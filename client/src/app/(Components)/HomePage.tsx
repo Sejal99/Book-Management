@@ -132,12 +132,16 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+      <div className="mb-2">
+
+     
       <Pagination
         data={data}
         itemsPerPage={itemsPerPage}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
+       </div>
     </div>
   );
 };
