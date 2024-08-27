@@ -8,8 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./GlobalRedux/store";
 import { reset } from "./GlobalRedux/Features/CounterSlice";
 import logo from "../../../public/user.png";
-import orderIcon from "../../../public/orderIcon.png"; // Replace with your actual icon path
-import logoutIcon from "../../../public/logoutIcon.png"; // Replace with your actual icon path
+import orderIcon from "../../../public/orderIcon.png"; 
+import logoutIcon from "../../../public/logoutIcon.png"; 
+
+
 
 const Navbar = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -51,6 +53,7 @@ const Navbar = () => {
       >
         Booksy
       </div>
+    
       <div className="flex gap-5 items-center">
         {/* User Profile Icon */}
         <div className="relative">
