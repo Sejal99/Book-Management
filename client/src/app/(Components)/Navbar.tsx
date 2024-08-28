@@ -81,7 +81,7 @@ const Navbar = () => {
               {token && (
                 <div
                   onClick={handleLogout}
-                  className="flex items-center gap-2 px-4 py-2 text-gray-800 cursor-pointer  hover:bg-red-400"
+                  className="flex items-center gap-2 px-4 py-2 text-black cursor-pointer  hover:bg-red-400"
                 >
                   <Image
                     src={logoutIcon}
