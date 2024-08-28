@@ -52,6 +52,7 @@ const Navbar = () => {
         className="text-white cursor-pointer text-3xl font-bold transition-transform transform hover:scale-105"
       >
         Booksy
+        
       </div>
     
       <div className="flex gap-5 items-center">
@@ -67,7 +68,7 @@ const Navbar = () => {
             <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 z-50">
               <div
                 onClick={() => router.push("/my-orders")}
-                className="flex items-center gap-2 px-4 py-2 text-gray-800 cursor-pointer hover:bg-red-400"
+                className="flex items-center gap-2 px-4 py-2 text-black cursor-pointer hover:bg-red-400"
               >
                 <Image
                   src={orderIcon}
